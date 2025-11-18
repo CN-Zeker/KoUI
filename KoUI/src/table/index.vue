@@ -2,7 +2,7 @@
  * @Author: zhangke
  * @Date: 2025-11-13 15:48:54
  * @LastEditors: zhangke
- * @LastEditTime: 2025-11-14 17:38:11
+ * @LastEditTime: 2025-11-17 15:28:46
  * @Description: 表格组件
 -->
 
@@ -37,6 +37,14 @@
       <!-- 表体 -->
       <div class="ko-table__body-wrapper">
         <table class="ko-table__body">
+          <colgroup>
+            <col
+              v-for="(item, index) in bodyColgroup"
+              :key="index"
+              :name="item.name"
+              :width="item.width"
+            />
+          </colgroup>
           <tbody>
             <tr class="ko-table__row">
               <td>
@@ -54,7 +62,6 @@
             <tr class="ko-table__row">
               <td>
                 <div class="cell">合计</div>
-                <font color="red">4</font>
               </td>
             </tr>
           </tfoot>
@@ -84,6 +91,14 @@
       colspan: number;
       rowspan: number;
       cellContent: VNode;
+    }>
+  >([]);
+
+  /** 表格体 内容 */
+  const bodyColgroup = ref<
+    Array<{
+      name: string;
+      width: string;
     }>
   >([]);
 
